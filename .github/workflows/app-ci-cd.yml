@@ -292,6 +292,7 @@ jobs:
     name: Update Manifests repo with the new Tags in order to be executed by ArgoCD
     runs-on: ubuntu-latest
     needs: [BuildAndPushImage, RunHasherTests, RunRngTests, RunRedisServerTests,  RunWebUIIntegrationTests]
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@master
